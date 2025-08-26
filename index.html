@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eco Soft — ИИ‑агенты и боты • IT Outsource под SLA</title>
+  <meta name="description" content="Eco Soft — ИИ‑агенты для продаж и поддержки, интеграция с CRM и телефонией. IT Outsource с прозрачными SLA: helpdesk, серверы, сети, DevOps." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1220;
+      --ink:#eaf2ff;
+      --muted:#9aa4b2;
+      --primary:#61e4cf;
+      --primary-ink:#05231e;
+      --stroke:#1f2436;
+      --card:#12162a;
+      --badge:#1a2036;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --shadow-soft:0 8px 20px rgba(0,0,0,.2);
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;border-radius:999px;border:1px solid transparent;font-weight:600;transition:.2s ease;cursor:pointer}
+    .btn-primary{background:var(--primary);color:var(--primary-ink)}
+    .btn-primary:hover{filter:brightness(.95);transform:translateY(-1px)}
+    .btn-ghost{border-color:var(--stroke);background:transparent;color:var(--ink)}
+    .btn-ghost:hover{background:rgba(255,255,255,.03)}
+    .badge{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:999px;background:var(--badge);color:var(--muted);font-size:.85rem;border:1px solid var(--stroke)}
+    .section{padding:80px 0}
+    .title{font-size:42px;line-height:1.15;margin:0 0 12px}
+    .subtitle{color:var(--muted);font-size:18px;line-height:1.6;margin:0}
+    .grid{display:grid;gap:22px}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    @media (max-width:960px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}.title{font-size:34px}}
+
+    .nav{position:sticky;top:0;z-index:50;background:rgba(13,16,32,.7);backdrop-filter:blur(8px);border-bottom:1px solid var(--stroke)}
+    .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:.8rem;font-weight:800}
+    .brand .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#6cf,#7fffd4);box-shadow:var(--shadow-soft)}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{color:var(--muted)}
+    .menu a.active,.menu a:hover{color:var(--ink)}
+    .burger{display:none}
+    @media (max-width:960px){.menu{display:none}.burger{display:inline-flex}}
+
+    .hero{padding:96px 0 72px;background:
+      radial-gradient(800px 300px at 50% -10%, rgba(97,228,207,.18), transparent 60%),
+      radial-gradient(600px 240px at 10% 10%, rgba(97,228,207,.12), transparent 60%),
+      radial-gradient(600px 240px at 90% 10%, rgba(111,140,255,.12), transparent 60%)}
+    .hero h1{font-size:56px;line-height:1.05;margin:0 0 16px}
+    .hero p{color:var(--muted);font-size:20px;line-height:1.6;margin:0 0 26px;max-width:780px}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+
+    .card{background:var(--card);border:1px solid var(--stroke);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .card h3{margin:4px 0 8px;font-size:20px}
+    .muted{color:var(--muted)}
+
+    .steps{counter-reset:st}
+    .step{position:relative;padding-left:52px}
+    .step:before{counter-increment:st;content:counter(st);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--badge);border:1px solid var(--stroke);color:var(--muted);font-weight:700}
+
+    .pricing .plan{display:flex;flex-direction:column;gap:14px}
+    .price{font-size:34px;font-weight:800}
+    .plan ul{margin:0;padding-left:18px;color:var(--muted)}
+    .plan li{margin:6px 0}
+    .plan .btn{margin-top:8px}
+    .plan.pop{border:2px solid var(--primary);transform:translateY(-2px)}
+
+    form{display:grid;gap:12px}
+    input,select,textarea{width:100%;background:#0b0e1b;color:var(--ink);border:1px solid var(--stroke);border-radius:12px;padding:12px 14px;font:inherit}
+    textarea{min-height:120px}
+    .note{font-size:13px;color:var(--muted)}
+
+    footer{border-top:1px solid var(--stroke);padding:24px 0;color:var(--muted)}
+    .row{display:flex;gap:18px;flex-wrap:wrap}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container wrap">
+      <a class="brand" href="#top"><span class="logo" aria-hidden="true"></span><span>Eco Soft</span></a>
+      <nav class="menu" id="menu">
+        <a href="#ai">ИИ‑агенты</a>
+        <a href="#outsourcing">IT Outsource</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#pricing">Тарифы</a>
+        <a href="#about">О компании</a>
+        <a href="#contact" class="btn btn-primary">Обсудить проект</a>
+      </nav>
+      <button class="burger btn btn-ghost" id="burger">Меню</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <span class="badge">ИИ • Голос • Чат • Интеграции</span>
+        <h1>ИИ‑агенты, которые продают. IT‑аутсорсинг, который не подводит.</h1>
+        <p>Eco Soft проектирует и внедряет голосовых и чат‑агентов, подключает WhatsApp/Telegram и телефонию, обучает на ваших материалах (RAG) и фиксирует KPI. Параллельно берём на себя поддержку пользователей и инфраструктуры: серверы, сети, облака, DevOps — с прозрачными SLA.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Запустить пилот за 14 дней</a>
+          <a href="#cases" class="btn btn-ghost">Смотреть кейсы</a>
+        </div>
+        <div class="trust">
+          <span class="badge">Ответ ≤ 2 мин</span>
+          <span class="badge">SLA 99.9%</span>
+          <span class="badge">Омниканал: Голос • WhatsApp • Telegram • Сайт</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai" class="section">
+      <div class="container">
+        <h2 class="title">ИИ‑агенты и боты под ваши процессы</h2>
+        <p class="subtitle">От квалификации лидов до закрытия сделок и поддержки клиентов — агенты работают по вашим правилам.</p>
+        <div class="grid grid-3" style="margin-top:22px">
+          <div class="card">
+            <h3>ИИ‑продажники</h3>
+            <p class="muted">Входящие и исходящие: квалификация, назначение встреч/демо, доведение до оплаты, напоминания.</p>
+          </div>
+          <div class="card">
+            <h3>Саппорт‑агенты</h3>
+            <p class="muted">FAQ, статусы заявок, маршрутизация, NPS/CSAT‑опросы, эскалации по регламенту.</p>
+          </div>
+          <div class="card">
+            <h3>Голосовые агенты</h3>
+            <p class="muted">Приём звонков, IVR, обратные звонки, автообзвоны, напоминания о платежах.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-top:28px">
+          <div class="card">
+            <h3>Техстек</h3>
+            <p class="muted">LLM‑оркестрация, RAG на корпоративных данных, векторные БД, инструменты‑функции, ASR/TTS, guardrails, аналитика диалогов.</p>
+          </div>
+          <div class="card steps">
+            <h3>Запуск за 14 дней</h3>
+            <div class="step"><strong>Диагностика:</strong> цели, KPI, источники данных</div>
+            <div class="step"><strong>Прототип:</strong> 1–2 сценария, подключение каналов</div>
+            <div class="step"><strong>Интеграции:</strong> CRM/ERP/телефония/вебхуки</div>
+            <div class="step"><strong>Обучение:</strong> RAG на инструкциях/FAQ</div>
+            <div class="step"><strong>Пилот:</strong> сбор метрик 1–2 недели</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="outsourcing" class="section">
+      <div class="container">
+        <h2 class="title">IT Outsource с прозрачными SLA</h2>
+        <p class="subtitle">Поддержка пользователей 24/7, серверы и сети, облака и DevOps. Регламенты, эскалации, отчёты.</p>
+        <div class="grid grid-4" style="margin-top:22px">
+          <div class="card"><h3>Helpdesk L1‑L3</h3><p class="muted">Тикеты, удалённая помощь, on‑site по запросу.</p></div>
+          <div class="card"><h3>Инфраструктура</h3><p class="muted">Windows/Linux‑сервера, виртуализация, резервное копирование.</p></div>
+          <div class="card"><h3>Сети</h3><p class="muted">Маршрутизация, Wi‑Fi, VPN, мониторинг, SD‑WAN.</p></div>
+          <div class="card"><h3>Облака и DevOps</h3><p class="muted">CI/CD, контейнеризация, IaC, наблюдаемость.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases" class="section">
+      <div class="container">
+        <h2 class="title">Кейсы и результаты</h2>
+        <p class="subtitle">Коротко и по делу: что внедрили и как это повлияло на метрики.</p>
+        <div class="grid grid-3" style="margin-top:22px">
+          <div class="card">
+            <h3>eCommerce</h3>
+            <p class="muted">ИИ‑продажник в WhatsApp. <strong>+27% конверсия</strong> из лида в диалог за 3 недели.</p>
+          </div>
+          <div class="card">
+            <h3>EdTech</h3>
+            <p class="muted">Саппорт‑бот на сайте/Telegram. <strong>‑40% нагрузка</strong> на операторов, 85% FAQ закрыто ИИ.</p>
+          </div>
+          <div class="card">
+            <h3>Fin‑services</h3>
+            <p class="muted">Голосовой агент для напоминаний. <strong>+18% возвраты</strong> в срок, прозрачная аналитика звонков.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section pricing">
+      <div class="container">
+        <h2 class="title">Тарифы</h2>
+        <p class="subtitle">Готовые пакеты — стартуйте быстро. Enterprise — по КП.</p>
+        <div class="grid grid-3" style="margin-top:22px">
+          <div class="card plan">
+            <span class="badge">Пилот</span>
+            <div class="price">KZT/EUR</div>
+            <div class="muted">14 дней, 1–2 сценария, 1 канал, базовая аналитика</div>
+            <ul>
+              <li>Интеграция (CRM / вебхуки)</li>
+              <li>Обучение на ваших FAQ (RAG)</li>
+              <li>Отчёт по KPI</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost">Запросить</a>
+          </div>
+          <div class="card plan pop">
+            <span class="badge">Бизнес</span>
+            <div class="price">KZT/EUR / мес</div>
+            <div class="muted">До 5 сценариев, омниканал, отчёты, поддержка</div>
+            <ul>
+              <li>WhatsApp • Telegram • Голос • Сайт</li>
+              <li>Сквозная аналитика, QA диалогов</li>
+              <li>SLA по реакции/восстановлению</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Выбрать пакет</a>
+          </div>
+          <div class="card plan">
+            <span class="badge">Enterprise</span>
+            <div class="price">КП</div>
+            <div class="muted">Кастом‑сценарии, SSO, комплаенс, выделенная команда</div>
+            <ul>
+              <li>Глубокие интеграции (ERP/телефония)</li>
+              <li>Расширенный SLA</li>
+              <li>Отдельные среды и доступы</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost">Запросить КП</a>
+          </div>
+        </div>
+        <p class="note" style="margin-top:12px">Примечание: стоимость голоса/ASR/TTS и исходящих звонков рассчитывается отдельно по объёму. Хранение данных и лимиты RAG — по уровню тарифа.</p>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container grid grid-2">
+        <div>
+          <h2 class="title">О компании</h2>
+          <p class="subtitle">Eco Soft — команда инженеров по ИИ и IT‑инфраструктуре. Запускаем пилоты быстро, фиксируем KPI, подписываем SLA, уделяем внимание безопасности и комплаенсу.</p>
+          <div class="row" style="margin-top:14px">
+            <span class="badge">Опыт: LLM, RAG, интеграции</span>
+            <span class="badge">DevOps • SRE</span>
+            <span class="badge">Security & Logs</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>География и контакты</h3>
+          <p class="muted">Казахстан, Алматы</p>
+          <p class="muted">Тел.: <a href="tel:+77476591981">+7 747 659 19 81</a></p>
+          <p class="muted">Email: <a href="mailto:adletteinc@gmail.com">adletteinc@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container grid grid-2">
+        <div>
+          <h2 class="title">Обсудить проект</h2>
+          <p class="subtitle">Оставьте контакты — пришлём расчёт пилота и схему интеграций в течение дня.</p>
+          <form id="lead-form">
+            <input type="text" name="name" placeholder="Имя" required>
+            <input type="text" name="company" placeholder="Компания" required>
+            <input type="tel" name="phone" placeholder="Телефон (WhatsApp): +7 747 659 19 81" required>
+            <input type="email" name="email" placeholder="Email: adletteinc@gmail.com" required>
+            <select name="interest" required>
+              <option value="">Что интересно?</option>
+              <option>ИИ‑агенты и боты</option>
+              <option>IT Outsource</option>
+              <option>И то, и другое</option>
+            </select>
+            <textarea name="brief" placeholder="Кратко опишите задачу"></textarea>
+            <label class="note"><input type="checkbox" required> Согласен(на) с политикой конфиденциальности</label>
+            <div class="row">
+              <button class="btn btn-primary" type="submit">Отправить</button>
+              <a class="btn btn-ghost" id="whatsapp-link" href="#">Написать в WhatsApp</a>
+            </div>
+            <p class="note">Ответим в течение 1–2 часов в рабочее время. Или пишите на <a href="mailto:adletteinc@gmail.com">adletteinc@gmail.com</a></p>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Быстрая связь</h3>
+          <p class="muted">Казахстан, Алматы</p>
+          <p class="muted">WhatsApp: <a href="https://wa.me/77476591981" target="_blank">+7 747 659 19 81</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container row" style="justify-content:space-between;align-items:center">
+      <div>© <span id="y"></span> Eco Soft — ИИ‑агенты и IT Outsource</div>
+      <div class="note"></div>
+    </div>
+  </footer>
+
+  <script>
+    const burger=document.getElementById('burger');
+    const menu=document.getElementById('menu');
+    burger?.addEventListener('click',()=>menu.classList.toggle('hidden'));
+
+    document.getElementById('y').textContent=new Date().getFullYear();
+
+    const WA='77476591981';
+    const waLink=(text='')=> WA? `https://wa.me/${WA}?text=${encodeURIComponent(text)}` : '#';
+
+    const waBtn=document.getElementById('whatsapp-link');
+    const form=document.getElementById('lead-form');
+
+    waBtn?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const name=form?.elements['name']?.value||'';
+      const interest=form?.elements['interest']?.value||'';
+      const brief=form?.elements['brief']?.value||'';
+      const text=`Привет! Хочу обсудить проект в Eco Soft. Имя: ${name}. Интерес: ${interest}. Задача: ${brief}`;
+      window.open(waLink(text), '_blank');
+    });
+
+    form?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data=Object.fromEntries(new FormData(form).entries());
+      try{
+        // TODO: замените URL на ваш webhook/n8n/Make/CRM endpoint
+        const r=await fetch('https://example.com/webhook',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'landing',...data,time:new Date().toISOString()})});
+        if(r.ok){alert('Спасибо! Мы свяжемся с вами в WhatsApp.'); form.reset();}
+        else{alert('Не удалось отправить. Напишите нам в WhatsApp.');}
+      }catch(err){
+        alert('Сеть недоступна. Напишите нам в WhatsApp.');
+      }
+    });
+  </script>
+</body>
+</html>
